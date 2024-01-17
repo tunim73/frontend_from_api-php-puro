@@ -1,6 +1,6 @@
 import { ErrorPage, Home, Login, Register } from "pages/public";
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import { BasicLayout, LayoutWithAuth } from "shared/Layouts";
+import { BasicLayout } from "shared/Layouts";
 
 export const Router = createBrowserRouter([
   {

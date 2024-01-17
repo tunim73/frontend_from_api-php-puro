@@ -47,11 +47,7 @@ export const LoginForm = ({
                   placeholder={item.placeholder}
                   required={item.required}
                   color={errors[item.id] ? "failure" : undefined}
-                  helperText={
-                    typeof errors[item.id]?.message === "string" && (
-                      <span>{errors[item.id]?.message || ""}</span>
-                    )
-                  }
+                  
                   {...register(item.id)}
                 />
               </div>
@@ -67,3 +63,11 @@ export const LoginForm = ({
     </div>
   );
 };
+
+/* 
+helperText={
+                    typeof errors[item.id]?.message === "string" && (
+                      <span>{errors[item.id]?.message || ""}</span>
+                    )
+                  }
+*/
