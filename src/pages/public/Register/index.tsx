@@ -122,7 +122,7 @@ export const Register = () => {
       return;
     }
     console.log('newUser: ', newUser)
-    //navigate("/login");
+    navigate("/login");
     return;
   };
 

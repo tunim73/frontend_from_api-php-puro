@@ -1,6 +1,6 @@
 import axios from "axios";
-import { api, settingAxios } from "services";
-import { ApiException, Course, User } from "types";
+import { api } from "services";
+import { ApiException } from "types";
 
 const connectionWithEndpoints = () => ({
 
