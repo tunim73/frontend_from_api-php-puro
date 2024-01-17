@@ -31,7 +31,7 @@ export const NavBar = () => {
     <Navbar fluid rounded>
       <NavLink to="/">
         <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white text-indigo-500">
-          PCursos
+          E-on
         </span>
       </NavLink>
       <Navbar.Toggle />
