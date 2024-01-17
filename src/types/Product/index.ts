@@ -1,4 +1,4 @@
-import { Category } from "types";
+import { Category, User } from "types";
 
 export interface Product {
   cod: number;
@@ -8,7 +8,19 @@ export interface Product {
   category: Category
   quantity: number;
   description: string;
-  image: number;
+  image: string;
   userID: number | null
+  user?: User 
   createdAt: Date;
+}
+
+
+export interface ProductCreate {
+  name: string;
+  value: number;
+  quantity: number;
+  description: string;
+  image?: string;
+  userId: number;
+  categoryId: number;
 }
