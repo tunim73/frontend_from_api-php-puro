@@ -8,12 +8,20 @@ export const NavBar = () => {
 
   const navLinks = [
     {
+      link: user?.type===1 ? "/assinantes/dashboard" : "/home",
+      name: user?.type===1 ? "Assinantes" : null,
+    },
+    {
       link: "/",
       name: "Home",
     },
     {
-      link: user ? "/meus-cursos" : "/login",
-      name: "Meus Cursos",
+      link: user ? "/meus-produtos" : "/login",
+      name: "Meus Produtos",
+    },
+    {
+      link: user ? "/notícias" : "/login",
+      name: "Notícias",
     },
     {
       link: "/",
