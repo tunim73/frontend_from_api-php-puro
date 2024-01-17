@@ -1,19 +1,15 @@
 import { ErrorPage, Home, Login, Register } from "pages/public";
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { BasicLayout } from "shared/Layouts";
 
 export const Router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to={"/home"} />,
-  },
-  {
-    path: "/",
     element: <BasicLayout />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage/>,
     children: [
       {
-        path: "home",
+        path: "",
         element: <Home />,
       },
       {
@@ -22,6 +18,10 @@ export const Router = createBrowserRouter([
       },
       {
         path: "register",
+        element: <Register />,
+      },
+      {
+        path: "dashboard",
         element: <Register />,
       },
     ],

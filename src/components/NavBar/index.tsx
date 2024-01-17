@@ -8,7 +8,7 @@ export const NavBar = () => {
 
   const navLinks = [
     {
-      link: "/home",
+      link: "/",
       name: "Home",
     },
     {
@@ -16,20 +16,20 @@ export const NavBar = () => {
       name: "Meus Cursos",
     },
     {
-      link: "/home",
+      link: "/",
       name: "Contatos",
     },
   ];
 
   const onSignout = () => {
     signout();
-    navigate("/home");
+    navigate("/");
     return;
   };
 
   return (
     <Navbar fluid rounded>
-      <NavLink to="/home">
+      <NavLink to="/">
         <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white text-indigo-500">
           PCursos
         </span>
