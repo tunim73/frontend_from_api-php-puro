@@ -6,7 +6,7 @@ const connectionWithEndpoints = () => ({
   signin: async (
     email: string,
     password: string
-  ): Promise<{ user: User; token: string } | null | ApiException  > => {
+  ): Promise<{ user: User; token: string } | null | ApiException> => {
     try {
       const res = await api.post("/login", {
         email,
@@ -16,17 +16,24 @@ const connectionWithEndpoints = () => ({
     } catch (error) {
       console.error(error);
       if (axios.isAxiosError(error)) return error.response?.data.data;
-      
+
       return null;
     }
   },
-  profile: async () => {
+  verifyToken: async () => {
     const settingGeneralAxios = settingAxios();
     if (!settingGeneralAxios) return false;
 
-    const resposta = await api.get("/auth/profile", settingGeneralAxios);
+    try {
+      const resposta = await api.get("/auth", settingGeneralAxios);
+    return resposta.data.data;
 
-    return resposta.data;
+    } catch (error) {
+      console.error(error);
+      if (axios.isAxiosError(error)) return error.response?.data.data;
+      return null;
+    }
+    
   },
 });
 

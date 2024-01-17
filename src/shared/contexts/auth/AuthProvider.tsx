@@ -12,8 +12,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }, []);
 
   const profile = async () => {
-    const data = await authApi.profile();
-
+    const data = await authApi.verifyToken();
     if (!data) {
       setUser(null);
       return;
