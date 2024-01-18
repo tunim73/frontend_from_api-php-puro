@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { categoryApi, productApi } from "services";
 import { useAuthContext } from "shared/contexts";
-import { Category, Product, ProductCreate, isApiException } from "types";
+import { Category, Product, isApiException } from "types";
 
 type Props = {
   buttonName: string;
   type: "create" | "update";
-  values?: ProductCreate;
+  values?: Product;
   fetcher: () => Promise<void>;
   setCloseModal: () => void;
 };
@@ -25,6 +25,7 @@ export const ProductFormForModal = ({
   const { register, handleSubmit, setValue } = useForm<Product>();
   const [categories, setCategories] = useState<Category[]>([]);
   const { user } = useAuthContext();
+  const [option, setOption] = useState<any>(0);
 
   useEffect(() => {
     categoryApi.findAll().then((e) => setCategories(e));
@@ -32,10 +33,11 @@ export const ProductFormForModal = ({
     if (type === "create") return;
     if (!values) return;
 
-    /* Object.entries(values).forEach(([key, value]) => {
-      
+    Object.entries(values).forEach(([key, value]) => {
       setValue(key as ValidKeys, value);
-    }); */
+    });
+
+    setOption(values.categoryId);
   }, []);
 
   const onSubmit = handleSubmit(async (data) => {
@@ -50,17 +52,17 @@ export const ProductFormForModal = ({
         setCloseModal();
         return;
       }
-      console.error("Erro ao criar curso. ", newProduct);
+      console.error("Erro ao criar produto. ", newProduct);
       return;
     }
 
-    const newProduct = await productApi.update(data);
+    const updatedProduct = await productApi.update(data);
 
-    if (isApiException(newProduct) || !newProduct) {
-      console.error("Erro ao atualizar curso. ", newProduct);
+    if (!updatedProduct) {
+      console.error("Erro ao atualizar produto. ", updatedProduct);
       return;
     }
-
+    console.log();
     fetcher();
     setCloseModal();
     return;
@@ -70,12 +72,17 @@ export const ProductFormForModal = ({
     <form onSubmit={onSubmit}>
       <div className="mb-2">
         <div className="mb-1 block">
-          <Label htmlFor="name" value="Selecione a categoria" />
+          <Label htmlFor="select" value="Selecione a categoria" />
         </div>
         <Select
+          id="select"
           {...register("categoryId")}
-          defaultValue={"Selecione uma opção"}
+          value={option}
+          onChange={(e) => setOption(e.target.value)}
         >
+          <option disabled value={0}>
+            Selecione uma opção
+          </option>
           {categories.map((e) => {
             return (
               <option value={e.id} key={e.id}>
@@ -83,9 +90,6 @@ export const ProductFormForModal = ({
               </option>
             );
           })}
-          <option disabled value={"Selecione uma opção"}>
-            Selecione uma opção
-          </option>
         </Select>
       </div>
       <div className="mb-2">

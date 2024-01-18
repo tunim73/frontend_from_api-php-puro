@@ -22,7 +22,7 @@ export const MyProducts = () => {
         </h2>
       </div>
       <ModalForm
-        title="Novo Curso"
+        title="Novo Produto"
         openModal={openModal}
         setOpenModal={setOpenModal}
       >
@@ -38,7 +38,7 @@ export const MyProducts = () => {
         className={"mb-10"}
         onClick={() => setOpenModal(true)}
       >
-        Novo Curso
+        Novo Produto
       </Button>
       <section className="flex justify-center gap-10 flex-wrap mb-10">
         {products.map((e) => {

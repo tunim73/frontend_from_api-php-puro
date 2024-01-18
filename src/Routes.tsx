@@ -1,5 +1,12 @@
 import { MyProducts } from "pages/private";
-import { CategoryṔage, ErrorPage, Home, Login, Register } from "pages/public";
+import {
+  CategoryṔage,
+  ErrorPage,
+  Home,
+  Login,
+  Product,
+  Register,
+} from "pages/public";
 import { createBrowserRouter } from "react-router-dom";
 import { BasicLayout } from "shared/Layouts";
 
@@ -21,10 +28,10 @@ export const Router = createBrowserRouter([
         path: "register",
         element: <Register />,
       },
-      {
+      /* {
         path: "dashboard",
         element: <Register />,
-      },
+      }, */
       {
         path: "category/:id",
         element: <CategoryṔage />,
@@ -32,6 +39,10 @@ export const Router = createBrowserRouter([
       {
         path: "meus-produtos",
         element: <MyProducts />,
+      },
+      {
+        path: "produto/:id",
+        element: <Product />,
       },
     ],
   },

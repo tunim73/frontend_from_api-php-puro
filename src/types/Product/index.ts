@@ -11,6 +11,7 @@ export interface Product {
   description: string;
   image: string;
   userId: number | null
+  userName?: string
   user?: User 
   createdAt: Date;
 }
