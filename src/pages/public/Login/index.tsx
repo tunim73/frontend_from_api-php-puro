@@ -38,7 +38,7 @@ export const Login = () => {
 
     const response = await signin(data.email, data.password);
     if (response === true) {
-      navigate('/meus-produtos')
+      navigate("/noticias/destaques");
       return;
     }
 
