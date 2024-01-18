@@ -12,16 +12,15 @@ const connectionWithEndpoints = () => ({
       return null;
     }
   },
-  create: async (data: ProductCreate) => {
+  create: async (data: Product) => {
     const settingGeneralAxios = settingAxios();
     if (!settingGeneralAxios) return false;
-
     try {
       const res = await api.post("/product", data, settingGeneralAxios);
-      return res.data.data.product;
+      console.log('res: ', res)
+      return true;
     } catch (error) {
       console.error(error);
-      if (axios.isAxiosError(error)) return error.response?.data.data;
       return null;
     }
   },
@@ -37,6 +36,23 @@ const connectionWithEndpoints = () => ({
       return null;
     } */
   },
+
+  update: async (data: Product) => {
+    const settingGeneralAxios = settingAxios();
+    if (!settingGeneralAxios) return false;
+
+    try {
+      const res = await api.post(`/product/${data.cod}`, data, settingGeneralAxios);
+      return res.data.data.product;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  },
+
+
+
+
 });
 
 export const productApi = connectionWithEndpoints();

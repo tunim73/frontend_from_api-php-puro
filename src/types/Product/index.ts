@@ -10,7 +10,7 @@ export interface Product {
   quantity: number;
   description: string;
   image: string;
-  userID: number | null
+  userId: number | null
   user?: User 
   createdAt: Date;
 }
