@@ -26,6 +26,12 @@ export const LoginForm = ({
     setError,
   } = useForm();
 
+  const errrorMessage = (item: any): string => {
+    const err = errors[item.id]?.message;
+
+    if (typeof err === "string") return err;
+    return "";
+  };
 
   const onSubmit = (data: any) => {
     actionOnSubmit(data, setError);
@@ -47,13 +53,17 @@ export const LoginForm = ({
                   placeholder={item.placeholder}
                   required={item.required}
                   color={errors[item.id] ? "failure" : undefined}
-                  
+                  helperText={
+                    typeof errors[item.id]?.message === "string" && (
+                      <span>{errrorMessage(item)}</span>
+                    )
+                  }
                   {...register(item.id)}
                 />
               </div>
             );
           })}
-          
+
           <Button type="submit">{buttonName}</Button>
         </form>
         <NavLink to={alternativeLink.link} className="text-cyan-700">
@@ -65,9 +75,5 @@ export const LoginForm = ({
 };
 
 /* 
-helperText={
-                    typeof errors[item.id]?.message === "string" && (
-                      <span>{errors[item.id]?.message || ""}</span>
-                    )
-                  }
+
 */
