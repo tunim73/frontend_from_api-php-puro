@@ -1,4 +1,9 @@
-import { AllNewsPage, HighlightedNews, MyProducts } from "pages/private";
+import {
+  AllNewsPage,
+  HighlightedNews,
+  MyProducts,
+  NewsPage,
+} from "pages/private";
 import {
   CategoryṔage,
   ErrorPage,
@@ -51,6 +56,10 @@ export const Router = createBrowserRouter([
       {
         path: "noticias",
         element: <AllNewsPage />,
+      },
+      {
+        path: "noticia/:id",
+        element: <NewsPage />,
       },
     ],
   },
