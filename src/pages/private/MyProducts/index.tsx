@@ -1,11 +1,9 @@
 import { ProductCard, ModalForm, ProductFormForModal } from "components";
 import { Button } from "flowbite-react";
 import { useState } from "react";
-import { useAuthContext } from "shared/contexts";
 import { useMyProducts } from "shared/hooks";
 
 export const MyProducts = () => {
-  const { user } = useAuthContext();
   const { products, fetcher } = useMyProducts();
 
   const [openModal, setOpenModal] = useState(false);

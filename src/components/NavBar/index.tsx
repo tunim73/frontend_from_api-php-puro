@@ -20,7 +20,7 @@ export const NavBar = () => {
       name: "Meus Produtos",
     },
     {
-      link: user ? "/notícias" : "/login",
+      link: user ? "/noticias/destaques" : "/login",
       name: "Notícias",
     },
     {
