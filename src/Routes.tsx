@@ -3,6 +3,7 @@ import {
   HighlightedNews,
   MyProducts,
   NewsPage,
+  SubscribersDashboard,
 } from "pages/private";
 import {
   CategoryṔage,
@@ -60,6 +61,10 @@ export const Router = createBrowserRouter([
       {
         path: "noticia/:id",
         element: <NewsPage />,
+      },
+      {
+        path: "admin/dashboard/assinantes",
+        element: <SubscribersDashboard />,
       },
     ],
   },
