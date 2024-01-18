@@ -1,39 +1,23 @@
-import axios from "axios";
-import { api, settingAxios } from "services";
-import { ApiException, User } from "types";
+import { api } from "services";
 
 const connectionWithEndpoints = () => ({
-  signin: async (
-    email: string,
-    password: string
-  ): Promise<{ user: User; token: string } | null | ApiException> => {
+  findOne: async (id: number) => {
     try {
-      const res = await api.post("/login", {
-        email,
-        password,
-      });
+      const res = await api.get(`/category/${id}`);
       return res.data.data;
     } catch (error) {
       console.error(error);
-      if (axios.isAxiosError(error)) return error.response?.data.data;
-
       return null;
     }
   },
-  verifyToken: async () => {
-    const settingGeneralAxios = settingAxios();
-    if (!settingGeneralAxios) return false;
-
+  findAll: async () => {
     try {
-      const resposta = await api.get("/auth", settingGeneralAxios);
-    return resposta.data.data;
-
+      const res = await api.get(`/category`);
+      return res.data.data;
     } catch (error) {
       console.error(error);
-      if (axios.isAxiosError(error)) return error.response?.data.data;
       return null;
     }
-    
   },
 });
 

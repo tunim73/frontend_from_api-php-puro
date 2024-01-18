@@ -1,11 +1,12 @@
-import { Category, User } from "types";
+import { User } from "types";
 
 export interface Product {
   cod: number;
   name: string;
   status: number;
   value: number;
-  category: Category
+  categoryId: number;
+  categoryName?: string 
   quantity: number;
   description: string;
   image: string;

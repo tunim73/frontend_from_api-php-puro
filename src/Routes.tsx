@@ -1,4 +1,4 @@
-import { ErrorPage, Home, Login, Register } from "pages/public";
+import { CategoryṔage, ErrorPage, Home, Login, Register } from "pages/public";
 import { createBrowserRouter } from "react-router-dom";
 import { BasicLayout } from "shared/Layouts";
 
@@ -23,6 +23,10 @@ export const Router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Register />,
+      },
+      {
+        path: "category/:id",
+        element: <CategoryṔage />,
       },
     ],
   },

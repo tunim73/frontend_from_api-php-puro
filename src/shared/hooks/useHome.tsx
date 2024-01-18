@@ -1,19 +1,24 @@
 import { useCallback, useEffect, useState } from "react";
-import { productApi } from "services";
-import { Product } from "types";
+import { categoryApi, productApi } from "services";
+import { Category, Product } from "types";
 
 export const useHome = () => {
   const [products, setproducts] = useState<Product[]>([]);
-  
+  const [categories, setCategories] = useState<Category[]>([]);
+
   const fetcher = useCallback(async () => {
     const products = await productApi.activeProducts();
-    if (!products) return;
-    return setproducts(products);
+    const categories = await categoryApi.findAll();
+
+    if (!products || !categories) return;
+    setproducts(products);
+    setCategories(categories);
+    return;
   }, []);
 
   useEffect(() => {
     fetcher();
   }, []);
 
-  return { products, fetcher };
+  return { categories, products, fetcher };
 };
