@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { categoryApi, productApi } from "services";
 import { useAuthContext } from "shared/contexts";
-import { Category, Product, isApiException } from "types";
+import { Category, Product } from "types";
 
 type Props = {
   buttonName: string;

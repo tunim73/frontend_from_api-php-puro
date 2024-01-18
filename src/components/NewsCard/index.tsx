@@ -1,8 +1,8 @@
-import { ModalForm } from "components";
+/* import { ModalForm } from "components"; */
 import { Card } from "flowbite-react";
-import { useState } from "react";
+/* import { useState } from "react"; */
 import { NavLink } from "react-router-dom";
-import { useAuthContext } from "shared/contexts";
+/* import { useAuthContext } from "shared/contexts"; */
 import { News } from "types";
 
 type Props = {
@@ -10,12 +10,12 @@ type Props = {
 };
 
 export const NewsCard = ({ item }: Props) => {
-  const { user } = useAuthContext();
+/*   const { user } = useAuthContext();
   const [openModal, setOpenModal] = useState(false);
 
   const onClickForOpenModal = () => {
     setOpenModal(true);
-  };
+  }; */
 
   return (
     <div className="md:min-h-[300px]  md:w-[600px] sm:w-[450px] sm:h-auto">

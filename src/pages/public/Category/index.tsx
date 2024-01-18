@@ -1,7 +1,6 @@
 import { ProductCard } from "components";
-import { Button } from "flowbite-react";
 import { useCallback, useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { categoryApi } from "services";
 import { Product } from "types";
 
