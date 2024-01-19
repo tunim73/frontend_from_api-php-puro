@@ -26,6 +26,7 @@ export const ProductFormForModal = ({
   const [categories, setCategories] = useState<Category[]>([]);
   const { user } = useAuthContext();
   const [option, setOption] = useState<any>(0);
+  const [optionStatus, setOptionStatus] = useState<any>(1);
 
   useEffect(() => {
     categoryApi.findAll().then((e) => setCategories(e));
@@ -36,7 +37,7 @@ export const ProductFormForModal = ({
     Object.entries(values).forEach(([key, value]) => {
       setValue(key as ValidKeys, value);
     });
-
+    setOptionStatus(values.status);
     setOption(values.categoryId);
   }, []);
 
@@ -153,6 +154,20 @@ export const ProductFormForModal = ({
           required
           {...register("description")}
         />
+      </div>
+      <div className="mb-2">
+        <div className="mb-1 block">
+          <Label htmlFor="selectStatus" value="Selecione a categoria" />
+        </div>
+        <Select
+          id="selectStatus"
+          {...register("status")}
+          value={optionStatus}
+          onChange={(e) => setOptionStatus(e.target.value)}
+        >
+          <option value={1}>Ativo</option>
+          <option value={0}>Inativo</option>
+        </Select>
       </div>
 
       <div className="w-full mt-4">
