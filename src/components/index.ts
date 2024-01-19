@@ -5,3 +5,4 @@ export * from "./ProductFormForModal";
 export * from "./ModalForm";
 export * from "./NewsCard";
 export * from "./NewsFormForModal";
+export * from "./PasswordFormForModal";
