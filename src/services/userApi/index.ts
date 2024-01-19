@@ -72,12 +72,12 @@ const connectionWithEndpoints = () => ({
     }
   },
 
-  findAllSubscribers: async (id: number): Promise<User[] | false> => {
+  findAllSubscribers: async (): Promise<User[] | false> => {
     try {
       const settingGeneralAxios = settingAxios();
       if (!settingGeneralAxios) return false;
 
-      const res = await api.get(`/users/${id}`, settingGeneralAxios);
+      const res = await api.get(`/users`, settingGeneralAxios);
 
       return res.data.data;
     } catch (error) {
@@ -92,7 +92,7 @@ const connectionWithEndpoints = () => ({
       if (!settingGeneralAxios) return false;
 
       await api.delete(`/user/${id}`, settingGeneralAxios);
-      return true
+      return true;
     } catch (error) {
       console.error(error);
       return false;
@@ -116,7 +116,7 @@ const connectionWithEndpoints = () => ({
       );
 
       return true;
-    } catch (error) { 
+    } catch (error) {
       console.error(error);
       if (axios.isAxiosError(error)) return error.response?.data.data;
       return false;
