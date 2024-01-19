@@ -60,7 +60,7 @@ const fieldsUpdateRegistrationForm: typeFieldsLoginForm[] = [
 ];
 
 export const HighlightedNews = () => {
-  const { user, signout } = useAuthContext();
+  const { user, signout, profile } = useAuthContext();
   const { news, fetcher } = useHighlightedNews();
   const [openModalNewNews, setOpenModalNewNews] = useState(false);
   const [openModalUpdatePassword, setOpenModalUpdatePassword] = useState(false);
@@ -71,6 +71,8 @@ export const HighlightedNews = () => {
 
   const setCloseModal = () => {
     setOpenModalNewNews(false);
+    setOpenModalUpdateRegister(false);
+    setOpenModalUpdatePassword(false);
   };
 
   const onUpdateRegister = async (data: User, setError: SetErrorOfForm) => {
@@ -111,8 +113,8 @@ export const HighlightedNews = () => {
         });
       return;
     }
-    signout();
-    navigate("/login");
+    profile()
+    setCloseModal();
     return;
   };
 

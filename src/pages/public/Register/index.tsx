@@ -106,8 +106,8 @@ export const Register = () => {
       return;
     }
     if (isApiException(newUser)) {
-      console.log('aqui isAPIExcepciont ', newUser)
-      
+      console.log("aqui isAPIExcepciont ", newUser);
+
       if (newUser.message === "Já existe usuário com esse email cadastrado")
         setError("email", {
           type: "user já cadastrado",
@@ -121,7 +121,7 @@ export const Register = () => {
         });
       return;
     }
-    console.log('newUser: ', newUser)
+    console.log("newUser: ", newUser);
     navigate("/login");
     return;
   };

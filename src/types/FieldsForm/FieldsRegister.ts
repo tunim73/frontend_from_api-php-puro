@@ -8,3 +8,5 @@ export type FieldsRegister = {
   city: string;
   uf: string;
 };
+
+

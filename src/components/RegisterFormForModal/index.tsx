@@ -2,7 +2,7 @@ import { Button, Label, TextInput } from "flowbite-react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthContext } from "shared/contexts";
-import { User, typeFieldsLoginForm } from "types";
+import { FieldsRegister, User, UserForRegisterForm, typeFieldsLoginForm } from "types";
 import { SetErrorOfForm } from "types/SetErrorOfForm";
 
 type Props = {
@@ -12,10 +12,10 @@ type Props = {
   fetcher: () => Promise<void>;
   setCloseModal: () => void;
   fields: typeFieldsLoginForm[];
-  actionOnSubmit: (data: User, setError: SetErrorOfForm) => void;
+  actionOnSubmit: (data: UserForRegisterForm, setError: SetErrorOfForm) => void;
 };
 
-type ValidKeys = keyof User;
+type ValidKeys = keyof UserForRegisterForm
 
 export const RegisterFormForModal = ({
   buttonName,
@@ -30,7 +30,7 @@ export const RegisterFormForModal = ({
     setValue,
     formState: { errors },
     setError,
-  } = useForm<User>();
+  } = useForm<UserForRegisterForm>();
 
   const { user } = useAuthContext();
 
