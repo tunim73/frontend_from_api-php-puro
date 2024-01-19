@@ -2,7 +2,7 @@ import { Button, Label, TextInput } from "flowbite-react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthContext } from "shared/contexts";
-import { FieldsRegister, User, UserForRegisterForm, typeFieldsLoginForm } from "types";
+import { User, UserForRegisterForm, typeFieldsLoginForm } from "types";
 import { SetErrorOfForm } from "types/SetErrorOfForm";
 
 type Props = {

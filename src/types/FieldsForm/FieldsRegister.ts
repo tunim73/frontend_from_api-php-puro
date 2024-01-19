@@ -4,9 +4,9 @@ export type FieldsRegister = {
   password: string;
   password2: string;
   cpf: string;
-  address: string;
-  city: string;
-  uf: string;
+  address: string | null;
+  city: string | null;
+  uf: string | null;
 };
 
 

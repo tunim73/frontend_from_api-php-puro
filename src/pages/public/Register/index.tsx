@@ -92,7 +92,7 @@ export const Register = () => {
       return;
     }
 
-    if (data.uf.length !== 2) {
+    if (data.uf?.length !== 2) {
       setError("uf", {
         type: "cpf inc",
         message: "FORMATO UF: RJ",
