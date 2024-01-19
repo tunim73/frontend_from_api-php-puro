@@ -7,3 +7,4 @@ export * from "./NewsCard";
 export * from "./NewsFormForModal";
 export * from "./PasswordFormForModal";
 export * from "./PasswordFormForModalUsedAdmin";
+export * from "./CategoryFormForModal";
