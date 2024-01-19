@@ -71,6 +71,57 @@ const connectionWithEndpoints = () => ({
       return false;
     }
   },
+
+  findAllSubscribers: async (id: number): Promise<User[] | false> => {
+    try {
+      const settingGeneralAxios = settingAxios();
+      if (!settingGeneralAxios) return false;
+
+      const res = await api.get(`/users/${id}`, settingGeneralAxios);
+
+      return res.data.data;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  },
+
+  delete: async (id: number): Promise<boolean> => {
+    try {
+      const settingGeneralAxios = settingAxios();
+      if (!settingGeneralAxios) return false;
+
+      await api.delete(`/user/${id}`, settingGeneralAxios);
+      return true
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  },
+
+  updatePasswordByAdmin: async (
+    password: string,
+    id: number
+  ): Promise<boolean | ApiException> => {
+    try {
+      const settingGeneralAxios = settingAxios();
+      if (!settingGeneralAxios) return false;
+
+      await api.patch(
+        `/admin/user/${id}/password/`,
+        {
+          password,
+        },
+        settingGeneralAxios
+      );
+
+      return true;
+    } catch (error) { 
+      console.error(error);
+      if (axios.isAxiosError(error)) return error.response?.data.data;
+      return false;
+    }
+  },
 });
 
 export const userApi = connectionWithEndpoints();

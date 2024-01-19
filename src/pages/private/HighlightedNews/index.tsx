@@ -65,6 +65,8 @@ export const HighlightedNews = () => {
   const [openModalNewNews, setOpenModalNewNews] = useState(false);
   const [openModalUpdatePassword, setOpenModalUpdatePassword] = useState(false);
   const [openModalUpdateRegister, setOpenModalUpdateRegister] = useState(false);
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+
   const navigate = useNavigate();
 
   const setCloseModal = () => {
@@ -114,6 +116,17 @@ export const HighlightedNews = () => {
     return;
   };
 
+  const onClickDelete = async () => {
+    if (!user) return;
+    const res = await userApi.delete(user.id);
+
+    if (!res) return;
+
+    setCloseModal();
+    signout();
+    navigate("/");
+  };
+
   return (
     <div className="w-full h-full lg:px-24 md:px-24 px-3">
       <div className="w-full flex justify-between items-center flex-wrap mb-2 ">
@@ -125,13 +138,16 @@ export const HighlightedNews = () => {
           <Dropdown
             color="yellow"
             label="Configurações do usuário"
-            dismissOnClick={false}
+            dismissOnClick
           >
             <Dropdown.Item onClick={() => setOpenModalUpdateRegister(true)}>
               Alterar dados cadastrais
             </Dropdown.Item>
             <Dropdown.Item onClick={() => setOpenModalUpdatePassword(true)}>
               Alterar senha
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setOpenModalDelete(true)}>
+              Deletar Conta
             </Dropdown.Item>
           </Dropdown>
         </div>
@@ -193,6 +209,25 @@ export const HighlightedNews = () => {
         setOpenModal={setOpenModalUpdatePassword}
       >
         <PasswordFormForModal />
+      </ModalForm>
+      <ModalForm
+        title="Atenção !"
+        openModal={openModalDelete}
+        setOpenModal={setOpenModalDelete}
+      >
+        <div className="text-center">
+          <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+            Realmente deseja deletar esta conta ?
+          </h3>
+          <div className="flex justify-center gap-4">
+            <Button color="failure" onClick={onClickDelete}>
+              {"Sim, deletar"}
+            </Button>
+            <Button color="gray" onClick={setCloseModal}>
+              cancelar
+            </Button>
+          </div>
+        </div>
       </ModalForm>
     </div>
   );
